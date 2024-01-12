@@ -1,11 +1,11 @@
 import { Component } from "react";
 
+export class Home extends Component {
+  state = {
+    productName: "toshipa",
+  };
 
-export class Home extends Component 
-{
-    state={}
-
-    render (){
-        return <h2>Home Component</h2>
-    }
+  render() {
+    return <h2 className="text-center">Name : {this.state.productName}</h2>;
+  }
 }
