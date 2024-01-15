@@ -25,7 +25,16 @@ export default class Parent extends Component {
     //action
     newProducts = newProducts.filter((product) => product.id !== id);
     //setState
-    this.setState({products:newProducts});
+    this.setState({ products: newProducts });
+  };
+
+  updateProduct = (index) => {
+    // deepcopy
+    let products = [...this.state.products];
+    // action
+    products[index].count = products[index].count + 1;
+    // setstate
+    this.setState({ products });
   };
 
   render() {
@@ -33,7 +42,13 @@ export default class Parent extends Component {
       <div className="container bg-dark py-4">
         <div className="bg-dark p-3 row">
           {this.state.products.map((product, i) => (
-            <Child key={i} delete={this.deleteProduct} productInfo={product}></Child>
+            <Child
+              key={i}
+              index={i}
+              update={this.updateProduct}
+              delete={this.deleteProduct}
+              productInfo={product}
+            ></Child>
           ))}
         </div>
       </div>
