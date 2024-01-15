@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 
 export default class Child extends Component {
+  componentWillUnmount(){
+    console.log("component Will Unmount");
+  }
   render() {
     let { name, price, onSale, count,id } = this.props.productInfo;
     return (

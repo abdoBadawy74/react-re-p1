@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import Child from "./Child";
 
 export default class Parent extends Component {
+
+  constructor(){
+    super();//becuase class inherite from another class "Component"
+    console.log("constructor say Hello");
+  }
+
   state = {
     products: [
       { id: 1, name: "Toshipa c3", price: 8000, onSale: false, count: 10 },
@@ -18,6 +24,15 @@ export default class Parent extends Component {
       { id: 12, name: "Apple macBook", price: 8000, onSale: true, count: 8 },
     ],
   };
+
+componentDidMount(){
+  console.log("component Did Mount ");
+  // best position for Api
+}
+
+componentDidUpdate(){
+  console.log("component Did Update ");
+}
 
   deleteProduct = (id) => {
     // deep copy
@@ -38,6 +53,7 @@ export default class Parent extends Component {
   };
 
   render() {
+    console.log("Render say Hello");
     return (
       <div className="container bg-dark py-4">
         <div className="bg-dark p-3 row">
@@ -54,4 +70,11 @@ export default class Parent extends Component {
       </div>
     );
   }
+
 }
+
+
+// lifecycle 
+// bulding => 3 method is called : 1)constructor 2)render 3)ComponenetDidMount
+// updating => 1 method is called : 1)render 2) ComponenetDidUpdate
+// unMounting => 1)render from parent 2) componentWillUnmount from child 3) ComponenetDidUpdate from parent
